@@ -2,6 +2,12 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scafold", "src\Scafold\Scafold.csproj", "{CAD8895E-D995-44A2-A92C-F23C07AF8760}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backend", "Backend", "{478CECCE-2BD7-4D8B-9BC5-6A8BDF19E54B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Refiz.Domain", "src\backend\Refiz.Domain\Refiz.Domain.csproj", "{3F749E15-32A6-40FB-8590-584C2D7D36BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Refiz.Infrastructure", "src\backend\Refiz.Infrastructure\Refiz.Infrastructure.csproj", "{8C30558E-4214-4910-9590-34EE4DE19AC5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +18,17 @@ Global
 		{CAD8895E-D995-44A2-A92C-F23C07AF8760}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CAD8895E-D995-44A2-A92C-F23C07AF8760}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CAD8895E-D995-44A2-A92C-F23C07AF8760}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F749E15-32A6-40FB-8590-584C2D7D36BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F749E15-32A6-40FB-8590-584C2D7D36BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F749E15-32A6-40FB-8590-584C2D7D36BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F749E15-32A6-40FB-8590-584C2D7D36BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C30558E-4214-4910-9590-34EE4DE19AC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C30558E-4214-4910-9590-34EE4DE19AC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C30558E-4214-4910-9590-34EE4DE19AC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C30558E-4214-4910-9590-34EE4DE19AC5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3F749E15-32A6-40FB-8590-584C2D7D36BC} = {478CECCE-2BD7-4D8B-9BC5-6A8BDF19E54B}
+		{8C30558E-4214-4910-9590-34EE4DE19AC5} = {478CECCE-2BD7-4D8B-9BC5-6A8BDF19E54B}
 	EndGlobalSection
 EndGlobal
