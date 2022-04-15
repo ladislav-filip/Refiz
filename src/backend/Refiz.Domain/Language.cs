@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Refiz.Domain
+﻿namespace Refiz.Domain
 {
-    public partial class Language
+    public class Language : DomainEntity
     {
         public Language()
         {

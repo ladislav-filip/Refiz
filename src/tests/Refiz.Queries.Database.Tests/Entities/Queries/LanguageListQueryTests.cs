@@ -10,7 +10,7 @@ public class LanguageListQueryTests
     {
         var sut = new LanguageListQuery(Helper.CreateRefizContext(), Helper.GetMapper());
 
-        var data = await sut.Get();
+        var data = await sut.Get(new Filter());
 
         data.Count.Should().Be(3);
     }

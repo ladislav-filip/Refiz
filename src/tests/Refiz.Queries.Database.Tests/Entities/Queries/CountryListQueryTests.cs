@@ -10,7 +10,7 @@ public class CountryListQueryTests
     {
         var sut = new CountryListQuery(Helper.CreateRefizContext(), Helper.GetMapper());
 
-        var data = await sut.Get();
+        var data = await sut.Get(new Filter());
 
         data.Count.Should().Be(3);
     }

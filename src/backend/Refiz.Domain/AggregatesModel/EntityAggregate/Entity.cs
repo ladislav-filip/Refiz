@@ -2,7 +2,7 @@
 
 namespace Refiz.Domain.AggregatesModel.EntityAggregate
 {
-    public partial class Entity : IAggregateRoot
+    public class Entity : DomainEntity, IAggregateRoot
     {
         public Entity()
         {

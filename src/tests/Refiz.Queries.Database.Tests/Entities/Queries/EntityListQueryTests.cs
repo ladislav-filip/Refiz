@@ -16,7 +16,7 @@ public class EntityListQueryTests
     {
         var sut = new EntityListQuery(Helper.CreateRefizContext(), Helper.GetMapper());
 
-        var data = await sut.Get();
+        var data = await sut.Get(new Filter());
 
         data.Count.Should().Be(1);
     }

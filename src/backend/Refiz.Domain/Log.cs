@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Refiz.Domain.AggregatesModel.EntityAggregate;
+﻿using Refiz.Domain.AggregatesModel.EntityAggregate;
 using Refiz.Domain.AggregatesModel.RegisterAggregate;
 
 namespace Refiz.Domain

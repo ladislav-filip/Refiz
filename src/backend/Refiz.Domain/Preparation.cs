@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Refiz.Domain
+﻿namespace Refiz.Domain
 {
     public partial class Preparation
     {
