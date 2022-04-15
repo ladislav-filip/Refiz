@@ -4,8 +4,7 @@
 // Created:     28.02.2022
 #endregion
 
-using Microsoft.EntityFrameworkCore;
-using Refiz.Infrastructure;
+using System.Threading.Tasks;
 using Refiz.Queries.Entities.Queries;
 
 namespace Refiz.Queries.Database.Tests.Entities.Queries;
@@ -13,11 +12,11 @@ namespace Refiz.Queries.Database.Tests.Entities.Queries;
 public class EntityListQueryTests
 {
     [Fact]
-    public void Get()
+    public async Task Get()
     {
-        var sut = new EntityListQuery(Helper.CreateRefizContext());
+        var sut = new EntityListQuery(Helper.CreateRefizContext(), Helper.GetMapper());
 
-        var data = sut.Get();
+        var data = await sut.Get();
 
         data.Count.Should().Be(1);
     }

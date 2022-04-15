@@ -18,11 +18,11 @@ namespace Refiz.Infrastructure
         }
 
         // public virtual DbSet<ActivateEntity> ActivateEntities { get; set; } = null!;
-        // public virtual DbSet<Country> Countries { get; set; } = null!;
+        public virtual DbSet<Country> Countries { get; set; } = null!;
         public virtual DbSet<Entity> Entities { get; set; } = null!;
         // public virtual DbSet<EntitySetting> EntitySettings { get; set; } = null!;
         // public virtual DbSet<Group> Groups { get; set; } = null!;
-        // public virtual DbSet<Language> Languages { get; set; } = null!;
+        public virtual DbSet<Language> Languages { get; set; } = null!;
         // public virtual DbSet<Log> Logs { get; set; } = null!;
         // public virtual DbSet<NotifyRecipient> NotifyRecipients { get; set; } = null!;
         // public virtual DbSet<NotifySource> NotifySources { get; set; } = null!;
@@ -54,6 +54,11 @@ namespace Refiz.Infrastructure
         {
             modelBuilder.UseCollation("Czech_CI_AS");
 
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(RefizContext).Assembly);
+            
+            /* ------------------------ */
+            
+
             modelBuilder.Entity<ActivateEntity>(entity =>
             {
                 entity.HasKey(e => e.IdactivateEntity);
@@ -80,26 +85,7 @@ namespace Refiz.Infrastructure
                     .HasConstraintName("FK_ActivateEntities_entities");
             });
 
-            modelBuilder.Entity<Country>(entity =>
-            {
-                entity.HasKey(e => e.Idcountry)
-                    .HasName("PK_countries");
 
-                entity.HasIndex(e => e.CountryCode, "UK_countries")
-                    .IsUnique();
-
-                entity.Property(e => e.Idcountry).HasColumnName("IDCountry");
-
-                entity.Property(e => e.CountryCode).HasMaxLength(3);
-
-                entity.Property(e => e.Idlanguage).HasColumnName("IDLanguage");
-
-                entity.HasOne(d => d.IdlanguageNavigation)
-                    .WithMany(p => p.Countries)
-                    .HasForeignKey(d => d.Idlanguage)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_countries_language");
-            });
 
             modelBuilder.Entity<Entity>(entity =>
             {
@@ -204,21 +190,6 @@ namespace Refiz.Infrastructure
                 entity.Property(e => e.Description).HasMaxLength(1000);
 
                 entity.Property(e => e.KeyResource).HasMaxLength(50);
-            });
-
-            modelBuilder.Entity<Language>(entity =>
-            {
-                entity.HasKey(e => e.Idlanguage)
-                    .HasName("pk_languages");
-
-                entity.HasIndex(e => e.Code, "uk_languages_code")
-                    .IsUnique();
-
-                entity.Property(e => e.Idlanguage)
-                    .ValueGeneratedOnAdd()
-                    .HasColumnName("IDLanguage");
-
-                entity.Property(e => e.Code).HasMaxLength(3);
             });
 
             modelBuilder.Entity<Log>(entity =>
