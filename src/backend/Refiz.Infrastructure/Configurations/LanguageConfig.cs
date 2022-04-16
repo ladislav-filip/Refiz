@@ -16,13 +16,13 @@ public class LanguageConfig : IEntityTypeConfiguration<Language>
 {
     public void Configure(EntityTypeBuilder<Language> entity)
     {
-        entity.HasKey(e => e.Idlanguage)
+        entity.HasKey(e => e.Id)
             .HasName("pk_languages");
 
         entity.HasIndex(e => e.Code, "uk_languages_code")
             .IsUnique();
 
-        entity.Property(e => e.Idlanguage)
+        entity.Property(e => e.Id)
             .ValueGeneratedOnAdd()
             .HasColumnName("IDLanguage");
 

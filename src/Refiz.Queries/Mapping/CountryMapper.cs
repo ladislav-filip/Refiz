@@ -13,7 +13,7 @@ public class CountryMapper : Profile
     public CountryMapper()
     {
         CreateMap<Country, CountryItem>()
-            .ForCtorParam(nameof(CountryItem.Id), opt => opt.MapFrom(src => src.IdCountry))
+            .ForCtorParam(nameof(CountryItem.Id), opt => opt.MapFrom(src => src.Id))
             .ForCtorParam(nameof(CountryItem.Code), opt => opt.MapFrom(src => src.CountryCode));
     }
 }

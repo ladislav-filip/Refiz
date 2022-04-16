@@ -11,6 +11,6 @@ public class LanguageMapper : Profile
     public LanguageMapper()
     {
         CreateMap<Language, LanguageItem>()
-            .ForCtorParam(nameof(LanguageItem.Id), opt => opt.MapFrom(src => src.Idlanguage));
+            .ForCtorParam(nameof(LanguageItem.Id), opt => opt.MapFrom(src => src.Id));
     }
 }

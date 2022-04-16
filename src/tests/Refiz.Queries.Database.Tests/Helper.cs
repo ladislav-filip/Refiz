@@ -33,15 +33,15 @@ public static class Helper
         context.Database.EnsureCreated();
         
         context.Languages.AddRange(
-            new Language { Idlanguage = 1, Code = "cs", Active = true }, 
-            new Language { Idlanguage = 2, Code = "en", Active = true }, 
-            new Language { Idlanguage = 3, Code = "sk", Active = false }
+            new Language { Id = 1, Code = "cs", Active = true }, 
+            new Language { Id = 2, Code = "en", Active = true }, 
+            new Language { Id = 3, Code = "sk", Active = false }
         );
         
         context.Countries.AddRange(
-            new Country { IdCountry = 1, Idlanguage = 1, CountryCode = "cz" },
-            new Country { IdCountry = 2, Idlanguage = 2, CountryCode = "us" },
-            new Country { IdCountry = 3, Idlanguage = 3, CountryCode = "sk" }
+            new Country { Id = 1, IdLanguage = 1, CountryCode = "cz" },
+            new Country { Id = 2, IdLanguage = 2, CountryCode = "us" },
+            new Country { Id = 3, IdLanguage = 3, CountryCode = "sk" }
         );
 
         context.Entities.AddRange(

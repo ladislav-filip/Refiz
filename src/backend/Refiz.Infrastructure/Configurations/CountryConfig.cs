@@ -16,21 +16,21 @@ public class CountryConfig : IEntityTypeConfiguration<Country>
 {
     public void Configure(EntityTypeBuilder<Country> entity)
     {
-        entity.HasKey(e => e.IdCountry)
+        entity.HasKey(e => e.Id)
             .HasName("PK_countries");
 
         entity.HasIndex(e => e.CountryCode, "UK_countries")
             .IsUnique();
 
-        entity.Property(e => e.IdCountry).HasColumnName("IDCountry");
+        entity.Property(e => e.Id).HasColumnName("IDCountry");
 
         entity.Property(e => e.CountryCode).HasMaxLength(3);
 
-        entity.Property(e => e.Idlanguage).HasColumnName("IDLanguage");
+        entity.Property(e => e.IdLanguage).HasColumnName("IDLanguage");
 
         entity.HasOne(d => d.IdlanguageNavigation)
             .WithMany(p => p.Countries)
-            .HasForeignKey(d => d.Idlanguage)
+            .HasForeignKey(d => d.IdLanguage)
             .OnDelete(DeleteBehavior.ClientSetNull)
             .HasConstraintName("FK_countries_language");
     }

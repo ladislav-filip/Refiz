@@ -7,7 +7,7 @@
             Countries = new HashSet<Country>();
         }
 
-        public byte Idlanguage { get; set; }
+        public byte Id { get; set; }
         public string Code { get; set; } = null!;
         public bool Active { get; set; }
 

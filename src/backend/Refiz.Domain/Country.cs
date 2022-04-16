@@ -4,9 +4,9 @@ namespace Refiz.Domain
 {
     public class Country : DomainEntity
     {
-        public int IdCountry { get; set; }
+        public int Id { get; set; }
         public string CountryCode { get; set; } = null!;
-        public byte Idlanguage { get; set; }
+        public byte IdLanguage { get; set; }
 
         public virtual Language IdlanguageNavigation { get; set; } = null!;
         public virtual ICollection<Entity> Entities { get; set; } = new HashSet<Entity>();
