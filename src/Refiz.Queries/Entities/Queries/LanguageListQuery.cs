@@ -6,16 +6,22 @@
 
 #endregion
 
-using AutoMapper;
-using Refiz.Domain;
-using Refiz.Infrastructure;
-using Refiz.Queries.Entities.Models;
-
 namespace Refiz.Queries.Entities.Queries;
 
-public class LanguageListQuery : EfBaseQuery<Language, LanguageItem, Filter>
+public class LanguageListQuery : EfBaseQuery<Language, LanguageItem, LanguageFilter>
 {
     public LanguageListQuery(RefizContext context, IMapper mapper) : base(context, mapper)
     {
+    }
+
+    protected override IQueryable<Language> ApplyFilter(LanguageFilter filter, IQueryable<Language> query)
+    {
+        var (active, _, _) = filter;
+        if (active != null)
+        {
+            query = query.Where(p => p.Active == active);
+        }
+
+        return query;
     }
 }

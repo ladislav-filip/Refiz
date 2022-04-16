@@ -4,10 +4,7 @@
 // Created:     28.02.2022
 #endregion
 
-using AutoMapper;
 using Refiz.Domain.AggregatesModel.EntityAggregate;
-using Refiz.Infrastructure;
-using Refiz.Queries.Entities.Models;
 
 namespace Refiz.Queries.Entities.Queries;
 

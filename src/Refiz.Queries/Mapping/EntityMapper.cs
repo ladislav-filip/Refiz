@@ -6,9 +6,7 @@
 
 #endregion
 
-using AutoMapper;
 using Refiz.Domain.AggregatesModel.EntityAggregate;
-using Refiz.Queries.Entities.Models;
 
 namespace Refiz.Queries.Mapping;
 

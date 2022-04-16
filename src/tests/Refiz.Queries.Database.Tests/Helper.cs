@@ -45,7 +45,11 @@ public static class Helper
         );
 
         context.Entities.AddRange(
-            new Entity { Identity = 1, SurnameEntity = "Nowak", Email = "nowak@mail.cz", City = "Ostrava", NameEntity = "Josef", Password = "heslo", Street = "Nádražní" }
+            new Entity { Identity = 1, SurnameEntity = "Nowak", Email = "nowak@mail.cz", City = "Ostrava", NameEntity = "Josef", Password = "heslo", Street = "Nádražní" },
+            new Entity { Identity = 2, SurnameEntity = "Richter", Email = "richter@mail.cz", City = "Praha", NameEntity = "Pavel", Password = "heslo", Street = "Patrice Lumumby 2198/56" },
+            new Entity { Identity = 3, SurnameEntity = "Blehová", Email = "blehova@mail.cz", City = "Brno", NameEntity = "Alena", Password = "heslo", Street = "Sokolovská 2116" },
+            new Entity { Identity = 4, SurnameEntity = "Barfus", Email = "barfus@mail.cz", City = "Olomouc", NameEntity = "Jan", Password = "heslo", Street = "V Zahradách 531" },
+            new Entity { Identity = 5, SurnameEntity = "Figar", Email = "figar@mail.cz", City = "Ostrava", NameEntity = "Alois", Password = "heslo", Street = "Havlíčkova 818/56" }
         );
 
         context.SaveChanges();

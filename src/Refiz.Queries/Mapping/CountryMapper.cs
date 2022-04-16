@@ -6,10 +6,6 @@
 
 #endregion
 
-using AutoMapper;
-using Refiz.Domain;
-using Refiz.Queries.Entities.Models;
-
 namespace Refiz.Queries.Mapping;
 
 public class CountryMapper : Profile

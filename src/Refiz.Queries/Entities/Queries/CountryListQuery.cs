@@ -6,11 +6,6 @@
 
 #endregion
 
-using AutoMapper;
-using Refiz.Domain;
-using Refiz.Infrastructure;
-using Refiz.Queries.Entities.Models;
-
 namespace Refiz.Queries.Entities.Queries;
 
 public class CountryListQuery : EfBaseQuery<Country, CountryItem, Filter>

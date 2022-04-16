@@ -4,10 +4,6 @@
 // Created:     15.04.2022
 #endregion
 
-using AutoMapper;
-using Refiz.Domain;
-using Refiz.Queries.Entities.Models;
-
 namespace Refiz.Queries.Mapping;
 
 public class LanguageMapper : Profile

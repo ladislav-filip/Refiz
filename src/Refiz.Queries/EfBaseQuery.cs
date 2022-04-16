@@ -1,6 +1,4 @@
-﻿using AutoMapper;
-using Microsoft.EntityFrameworkCore;
-using Refiz.Infrastructure;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace Refiz.Queries;
 
@@ -9,8 +7,8 @@ public abstract class EfBaseQuery<TEntity, TItem, TFilter> : IBaseQuery
     where TItem : RecordMarker
     where TFilter : Filter
 {
-    protected RefizContext Context { get; }
-    protected IMapper Mapper { get; }
+    private RefizContext Context { get; }
+    private IMapper Mapper { get; }
 
     protected EfBaseQuery(RefizContext context, IMapper mapper)
     {
@@ -18,17 +16,23 @@ public abstract class EfBaseQuery<TEntity, TItem, TFilter> : IBaseQuery
         Mapper = mapper;
     }
 
-    public virtual async Task<RecordListMarker<TItem>> Get(TFilter filter)
+    public async Task<RecordListMarker<TItem>> Get(TFilter filter)
     {
-        var query = GetAsPaginnate(filter);
+        var query = Context.Set<TEntity>().AsQueryable();
+        query = ApplyFilter(filter, query);
+        query = GetAsPaginnate(filter, query);
         var data = await Mapper.ProjectTo<TItem>(query).ToListAsync();
         return new RecordListMarker<TItem>(data.Count, data);
     }
-    
-    protected IQueryable<TEntity> GetAsPaginnate(Filter filter)
+
+    protected virtual IQueryable<TEntity> ApplyFilter(TFilter filter, IQueryable<TEntity> query)
     {
-        var query = Context.Set<TEntity>().AsQueryable();
-        
+        return query;
+    }
+    
+    private IQueryable<TEntity> GetAsPaginnate(Filter filter, IQueryable<TEntity> query)
+    {
+
         if (filter.Limit > 0)
         {
             query = query.Take(filter.Limit);
