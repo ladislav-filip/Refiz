@@ -9,5 +9,3 @@
 namespace Refiz.Queries.Filters;
 
 public record Filter(int Limit = 0, int Skip = 0);
-
-public record LanguageFilter(bool? Active = null, int Limit = 0, int Skip = 0) : Filter;
