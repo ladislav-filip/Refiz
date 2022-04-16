@@ -4,7 +4,6 @@
 // Created:     28.02.2022
 #endregion
 
-using System;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Refiz.Domain;
