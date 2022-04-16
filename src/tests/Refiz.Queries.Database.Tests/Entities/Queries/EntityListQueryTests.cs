@@ -4,7 +4,6 @@
 // Created:     28.02.2022
 #endregion
 
-using System.Threading.Tasks;
 using Refiz.Queries.Entities.Queries;
 using Refiz.Queries.Filters;
 
@@ -20,5 +19,15 @@ public class EntityListQueryTests
         var data = await sut.Get(new EntityFilter(Email: "mail"));
 
         data.Count.Should().Be(5);
+    }
+    
+    [Fact]
+    public async Task Get_BlehovaEmailCaseInsensitive_Found()
+    {
+        var sut = new EntityListQuery(Helper.CreateRefizContext(), Helper.GetMapper());
+
+        var data = await sut.Get(new EntityFilter(Email: "BLEHOVA"));
+
+        data.Count.Should().Be(1);
     }
 }

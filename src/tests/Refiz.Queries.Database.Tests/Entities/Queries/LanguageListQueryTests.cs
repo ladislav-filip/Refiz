@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using Refiz.Queries.Entities.Queries;
+﻿using Refiz.Queries.Entities.Queries;
 using Refiz.Queries.Filters;
 
 namespace Refiz.Queries.Database.Tests.Entities.Queries;
