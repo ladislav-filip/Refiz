@@ -8,7 +8,7 @@ using Refiz.Domain.AggregatesModel.EntityAggregate;
 
 namespace Refiz.Queries.Entities.Queries;
 
-public class EntityListQuery : EfBaseQuery<Entity, EntityItemList, Filter>
+public class EntityListQuery : EfBaseQuery<Entity, int, EntityItemList, Filter>
 {
     public EntityListQuery(RefizContext context, IMapper mapper) : base(context, mapper)
     {

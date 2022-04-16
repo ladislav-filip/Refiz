@@ -15,7 +15,7 @@ public class EntityMapper : Profile
     public EntityMapper()
     {
         CreateMap<Entity, EntityItemList>()
-            .ForCtorParam(nameof(EntityItemList.Id), opt => opt.MapFrom(src => src.Identity))
+            .ForCtorParam(nameof(EntityItemList.Id), opt => opt.MapFrom(src => src.Id))
             .ForCtorParam(nameof(EntityItemList.DisplayName),
                 opt => opt.MapFrom(src => src.SurnameEntity + " " + src.NameEntity));
     }

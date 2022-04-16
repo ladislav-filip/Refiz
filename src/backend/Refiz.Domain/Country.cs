@@ -2,9 +2,8 @@
 
 namespace Refiz.Domain
 {
-    public class Country : DomainEntity
+    public class Country : DomainEntity<int>
     {
-        public int Id { get; set; }
         public string CountryCode { get; set; } = null!;
         public byte IdLanguage { get; set; }
 

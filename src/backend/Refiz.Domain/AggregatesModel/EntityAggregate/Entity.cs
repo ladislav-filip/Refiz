@@ -2,7 +2,7 @@
 
 namespace Refiz.Domain.AggregatesModel.EntityAggregate
 {
-    public class Entity : DomainEntity, IAggregateRoot
+    public class Entity : DomainEntity<int>, IAggregateRoot
     {
         public Entity()
         {
@@ -11,8 +11,7 @@ namespace Refiz.Domain.AggregatesModel.EntityAggregate
             NotifyRecipients = new HashSet<NotifyRecipient>();
             Registers = new HashSet<Register>();
         }
-
-        public int Identity { get; set; }
+    
         public string NameEntity { get; set; } = null!;
         public string SurnameEntity { get; set; } = null!;
         public string City { get; set; } = null!;

@@ -8,7 +8,7 @@
 
 namespace Refiz.Queries.Entities.Queries;
 
-public class CountryListQuery : EfBaseQuery<Country, CountryItem, Filter>
+public class CountryListQuery : EfBaseQuery<Country, int, CountryItem, Filter>
 {
     public CountryListQuery(RefizContext context, IMapper mapper) : base(context, mapper)
     {

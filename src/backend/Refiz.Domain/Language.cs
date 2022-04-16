@@ -1,13 +1,12 @@
 ﻿namespace Refiz.Domain
 {
-    public class Language : DomainEntity
+    public class Language : DomainEntity<byte>
     {
         public Language()
         {
             Countries = new HashSet<Country>();
         }
-
-        public byte Id { get; set; }
+        
         public string Code { get; set; } = null!;
         public bool Active { get; set; }
 

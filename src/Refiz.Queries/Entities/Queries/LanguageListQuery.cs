@@ -8,7 +8,7 @@
 
 namespace Refiz.Queries.Entities.Queries;
 
-public class LanguageListQuery : EfBaseQuery<Language, LanguageItem, LanguageFilter>
+public class LanguageListQuery : EfBaseQuery<Language, byte, LanguageItem, LanguageFilter>
 {
     public LanguageListQuery(RefizContext context, IMapper mapper) : base(context, mapper)
     {

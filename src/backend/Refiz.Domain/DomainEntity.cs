@@ -6,4 +6,7 @@
 
 #endregion
 
-public abstract class DomainEntity { }
+public abstract class DomainEntity<TKey>
+{
+    public TKey Id { get; set; }
+}

@@ -85,14 +85,14 @@ namespace Refiz.Infrastructure
 
             modelBuilder.Entity<Entity>(entity =>
             {
-                entity.HasKey(e => e.Identity);
+                entity.HasKey(e => e.Id);
 
                 entity.ToTable("entities");
 
                 entity.HasIndex(e => e.Email, "UK_entities_email")
                     .IsUnique();
 
-                entity.Property(e => e.Identity).HasColumnName("IDEntity");
+                entity.Property(e => e.Id).HasColumnName("IDEntity");
 
                 entity.Property(e => e.Cin)
                     .HasMaxLength(15)

@@ -2,8 +2,8 @@
 
 namespace Refiz.Queries;
 
-public abstract class EfBaseQuery<TEntity, TItem, TFilter> : IBaseQuery 
-    where TEntity : DomainEntity
+public abstract class EfBaseQuery<TEntity, TKey, TItem, TFilter> : IBaseQuery 
+    where TEntity : DomainEntity<TKey>
     where TItem : RecordMarker
     where TFilter : Filter
 {
