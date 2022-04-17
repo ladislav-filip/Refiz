@@ -6,7 +6,7 @@
 
 namespace Refiz.Domain.AggregatesModel.EntityAggregate;
 
-public interface IEntityRepository
+public interface IEntityRepository : IBaseRepository<Entity, int>
 {
     
 }
