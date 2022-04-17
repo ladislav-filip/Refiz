@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Refiz.Application.Infrastructure;
 using Refiz.Queries.Entities.Queries;
 
 namespace Refiz.Application.Entities.Logon;
@@ -6,11 +7,13 @@ namespace Refiz.Application.Entities.Logon;
 public class UserLoggedCommandHandler : IRequestHandler<UserLoggedCommand, UserLoggedModel>
 {
     private readonly IEntityLogonQuery _entityLogonQuery;
+    private readonly ICipher _cipher;
     private readonly IMapper _mapper;
 
-    public UserLoggedCommandHandler(IEntityLogonQuery entityLogonQuery, IMapper mapper)
+    public UserLoggedCommandHandler(IEntityLogonQuery entityLogonQuery, ICipher cipher, IMapper mapper)
     {
         _entityLogonQuery = entityLogonQuery;
+        _cipher = cipher;
         _mapper = mapper;
     }
     
@@ -23,7 +26,7 @@ public class UserLoggedCommandHandler : IRequestHandler<UserLoggedCommand, UserL
             throw new UserLogonException($"User with email '{request.Email}' not found");
         }
 
-        var passwordHash = request.Password;
+        var passwordHash = _cipher.Encrypt(request.Password, entity.Email);
 
         if (passwordHash != entity.Password)
         {
