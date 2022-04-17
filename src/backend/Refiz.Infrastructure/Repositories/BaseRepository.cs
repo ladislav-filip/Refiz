@@ -13,9 +13,9 @@ namespace Refiz.Infrastructure.Repositories;
 public abstract class BaseRepository<TEntity, TKey>
     where TEntity : DomainEntity<TKey>
 {
-    protected RefizContext Context { get; }
+    protected IRefizContext Context { get; }
 
-    protected BaseRepository(RefizContext context)
+    protected BaseRepository(IRefizContext context)
     {
         Context = context;
     }
