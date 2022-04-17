@@ -10,7 +10,7 @@ using Refiz.Domain.AggregatesModel.EntityAggregate;
 
 namespace Refiz.Queries.Entities.Queries;
 
-public class EntityLogonQuery : EfBaseQuery<Entity, int, EntityLogon, EntityLogonFilter>
+public class EntityLogonQuery : EfBaseQuery<Entity, int, EntityLogon, EntityLogonFilter>, IEntityLogonQuery
 {
     public EntityLogonQuery(IRefizContext context, IMapper mapper) : base(context, mapper)
     {
