@@ -7,10 +7,10 @@ public abstract class EfBaseQuery<TEntity, TKey, TItem, TFilter> : IBaseQuery
     where TItem : RecordMarker
     where TFilter : Filter
 {
-    private RefizContext Context { get; }
+    private IRefizContext Context { get; }
     private IMapper Mapper { get; }
 
-    protected EfBaseQuery(RefizContext context, IMapper mapper)
+    protected EfBaseQuery(IRefizContext context, IMapper mapper)
     {
         Context = context;
         Mapper = mapper;

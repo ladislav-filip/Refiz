@@ -6,10 +6,10 @@
 
 #endregion
 
-namespace Refiz.Domain.AggregatesModel.EntityAggregate;
+namespace Refiz.Domain;
 
 public interface IBaseRepository<TEntity, in TKey>
-    where TEntity : DomainEntity<TKey>
+    where TEntity : DomainEntity<TKey>, IAggregateRoot
 {
     Task<TEntity?> GetById(TKey id);
 

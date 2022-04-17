@@ -5,7 +5,7 @@ using Refiz.Domain.Views;
 
 namespace Refiz.Infrastructure
 {
-    public partial class RefizContext : DbContext
+    public partial class RefizContext : DbContext, IRefizContext, IUnitOfWork
     {
         public RefizContext()
         {
@@ -15,30 +15,6 @@ namespace Refiz.Infrastructure
             : base(options)
         {
         }
-
-        // public virtual DbSet<ActivateEntity> ActivateEntities { get; set; } = null!;
-        public virtual DbSet<Country> Countries { get; set; } = null!;
-        public virtual DbSet<Entity> Entities { get; set; } = null!;
-        // public virtual DbSet<EntitySetting> EntitySettings { get; set; } = null!;
-        // public virtual DbSet<Group> Groups { get; set; } = null!;
-        public virtual DbSet<Language> Languages { get; set; } = null!;
-        // public virtual DbSet<Log> Logs { get; set; } = null!;
-        // public virtual DbSet<NotifyRecipient> NotifyRecipients { get; set; } = null!;
-        // public virtual DbSet<NotifySource> NotifySources { get; set; } = null!;
-        // public virtual DbSet<Organisation> Organisations { get; set; } = null!;
-        // public virtual DbSet<Photo> Photos { get; set; } = null!;
-        // public virtual DbSet<Preparation> Preparations { get; set; } = null!;
-        // public virtual DbSet<Region> Regions { get; set; } = null!;
-        // public virtual DbSet<Register> Registers { get; set; } = null!;
-        // public virtual DbSet<RegisterHistory> RegisterHistories { get; set; } = null!;
-        // public virtual DbSet<Role> Roles { get; set; } = null!;
-        // public virtual DbSet<Setting> Settings { get; set; } = null!;
-        // public virtual DbSet<State> States { get; set; } = null!;
-        // public virtual DbSet<WEntity> WEntities { get; set; } = null!;
-        // public virtual DbSet<WNotifyRecipient> WNotifyRecipients { get; set; } = null!;
-        // public virtual DbSet<WPreparation> WPreparations { get; set; } = null!;
-        // public virtual DbSet<WRegister> WRegisters { get; set; } = null!;
-        // public virtual DbSet<WRegisterHistory> WRegisterHistories { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
