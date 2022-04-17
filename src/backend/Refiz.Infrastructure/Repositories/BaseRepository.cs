@@ -7,7 +7,6 @@
 #endregion
 
 using System.Linq.Expressions;
-using Microsoft.EntityFrameworkCore;
 
 namespace Refiz.Infrastructure.Repositories;
 

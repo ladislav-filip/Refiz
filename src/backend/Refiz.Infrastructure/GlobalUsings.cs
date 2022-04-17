@@ -4,5 +4,5 @@
 // Created:     17.04.2022
 #endregion
 
-global using FluentAssertions;
-global using Xunit;
+global using Microsoft.EntityFrameworkCore;
+global using Microsoft.EntityFrameworkCore.Metadata.Builders;
