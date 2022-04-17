@@ -7,7 +7,6 @@ namespace Refiz.Domain.AggregatesModel.EntityAggregate
         public Entity()
         {
             EntitySettings = new HashSet<EntitySetting>();
-            Logs = new HashSet<Log>();
             NotifyRecipients = new HashSet<NotifyRecipient>();
             Registers = new HashSet<Register>();
         }
@@ -44,7 +43,6 @@ namespace Refiz.Domain.AggregatesModel.EntityAggregate
         public Role Role { get; } = null!;
         public ActivateEntity ActivateEntity { get; set; } = null!;
         public ICollection<EntitySetting> EntitySettings { get; set; }
-        public ICollection<Log> Logs { get; set; }
         public ICollection<NotifyRecipient> NotifyRecipients { get; set; }
         public ICollection<Register> Registers { get; set; }
     }

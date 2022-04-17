@@ -6,8 +6,6 @@
 
 #endregion
 
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Refiz.Domain;
 
 namespace Refiz.Infrastructure.Configurations;

@@ -5,8 +5,6 @@
 #endregion
 
 using System.Diagnostics;
-using FluentAssertions.Execution;
-using Refiz.Domain;
 
 namespace Refiz.Infrastructure.Repositories;
 

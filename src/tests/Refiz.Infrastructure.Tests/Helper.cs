@@ -4,7 +4,6 @@
 // Created:     17.04.2022
 #endregion
 
-using System;
 using Microsoft.EntityFrameworkCore;
 using Refiz.Domain;
 using Refiz.Domain.AggregatesModel.EntityAggregate;
