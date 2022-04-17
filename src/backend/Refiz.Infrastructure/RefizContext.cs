@@ -130,23 +130,23 @@ namespace Refiz.Infrastructure
 
                 entity.Property(e => e.Zip).HasMaxLength(10);
 
-                entity.HasOne(d => d.IdcountryNavigation)
+                entity.HasOne(d => d.Country)
                     .WithMany(p => p.Entities)
                     .HasForeignKey(d => d.Idcountry)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_entities_Countries");
 
-                entity.HasOne(d => d.IdorganisationNavigation)
+                entity.HasOne(d => d.Organisation)
                     .WithMany(p => p.Entities)
                     .HasForeignKey(d => d.Idorganisation)
                     .HasConstraintName("FK_entities_Organisations");
 
-                entity.HasOne(d => d.IdregionNavigation)
+                entity.HasOne(d => d.Region)
                     .WithMany(p => p.Entities)
                     .HasForeignKey(d => d.Idregion)
                     .HasConstraintName("FK_entities_Regions");
 
-                entity.HasOne(d => d.IdroleNavigation)
+                entity.HasOne(d => d.Role)
                     .WithMany(p => p.Entities)
                     .HasForeignKey(d => d.Idrole)
                     .OnDelete(DeleteBehavior.ClientSetNull)
