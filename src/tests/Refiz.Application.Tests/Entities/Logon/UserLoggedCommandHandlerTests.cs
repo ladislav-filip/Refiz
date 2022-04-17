@@ -5,6 +5,7 @@
 #endregion
 
 using Refiz.Application.Entities.Logon;
+using Refiz.Application.Infrastructure;
 using Refiz.Queries.Entities.Models;
 using Refiz.Queries.Entities.Queries;
 
@@ -20,7 +21,7 @@ public class UserLoggedCommandHandlerTests
     {
         var mock = new Mock<IEntityLogonQuery>();
 
-        var sut = new UserLoggedCommandHandler(mock.Object, Helper.GetMapper());
+        var sut = new UserLoggedCommandHandler(mock.Object, Mock.Of<ICipher>(), Helper.GetMapper());
         
         var func = () => sut.Handle(new UserLoggedCommand("not-exists@mail.cz", Password), CancellationToken.None);
 
@@ -33,7 +34,7 @@ public class UserLoggedCommandHandlerTests
         var mock = new Mock<IEntityLogonQuery>();
         mock.Setup(s => s.Get(AnyMail)).ReturnsAsync(new EntityLogon(1, AnyMail, "wrong"));
 
-        var sut = new UserLoggedCommandHandler(mock.Object, Helper.GetMapper());
+        var sut = new UserLoggedCommandHandler(mock.Object, Mock.Of<ICipher>(), Helper.GetMapper());
         
         var func = () => sut.Handle(new UserLoggedCommand(AnyMail, Password), CancellationToken.None);
 
@@ -45,8 +46,10 @@ public class UserLoggedCommandHandlerTests
     {
         var mock = new Mock<IEntityLogonQuery>();
         mock.Setup(s => s.Get(AnyMail)).ReturnsAsync(new EntityLogon(1, AnyMail, Password));
+        var mockCipher = new Mock<ICipher>();
+        mockCipher.Setup(s => s.Encrypt(It.IsAny<string>(), It.IsAny<string>())).Returns(Password);
 
-        var sut = new UserLoggedCommandHandler(mock.Object, Helper.GetMapper());
+        var sut = new UserLoggedCommandHandler(mock.Object, mockCipher.Object, Helper.GetMapper());
         
         var result = await sut.Handle(new UserLoggedCommand(AnyMail, Password), CancellationToken.None);
 
