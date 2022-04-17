@@ -6,6 +6,8 @@
       &lt;TestId&gt;xUnit::AD321B6B-3805-46F6-BDBB-BD9DCCCE665C::net6.0::Refiz.Infrastructure.Repositories.EntityRepositoryTests.GetById&lt;/TestId&gt;&#xD;
       &lt;TestId&gt;xUnit::AD321B6B-3805-46F6-BDBB-BD9DCCCE665C::net6.0::Refiz.Infrastructure.Repositories.EntityRepositoryTests.GetById_1_EmailByNowak&lt;/TestId&gt;&#xD;
       &lt;TestId&gt;xUnit::AD321B6B-3805-46F6-BDBB-BD9DCCCE665C::net6.0::Refiz.Infrastructure.Repositories.EntityRepositoryTests&lt;/TestId&gt;&#xD;
+      &lt;TestId&gt;xUnit::7EC83237-AB52-40DA-AD3F-E675B1ACDFA7::net6.0::Refiz.Application.Tests.Entities.Logon.UserLoggedCommandHandlerTests.Handle_&lt;/TestId&gt;&#xD;
+      &lt;TestId&gt;xUnit::7EC83237-AB52-40DA-AD3F-E675B1ACDFA7::net6.0::Refiz.Application.Tests.Entities.Logon.UserLoggedCommandHandlerTests&lt;/TestId&gt;&#xD;
     &lt;/TestAncestor&gt;&#xD;
   &lt;/Or&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
