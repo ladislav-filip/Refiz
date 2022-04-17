@@ -48,7 +48,7 @@ public static class Helper
             new Entity { Id = 2, SurnameEntity = "Richter", Email = "richter@mail.cz", City = "Praha", NameEntity = "Pavel", Password = "heslo", Street = "Patrice Lumumby 2198/56" },
             new Entity { Id = 3, SurnameEntity = "Blehová", Email = "blehova@mail.cz", City = "Brno", NameEntity = "Alena", Password = "heslo", Street = "Sokolovská 2116" },
             new Entity { Id = 4, SurnameEntity = "Barfus", Email = "barfus@mail.cz", City = "Olomouc", NameEntity = "Jan", Password = "heslo", Street = "V Zahradách 531" },
-            new Entity { Id = 5, SurnameEntity = "Figar", Email = "figar@mail.cz", City = "Ostrava", NameEntity = "Alois", Password = "heslo", Street = "Havlíčkova 818/56" }
+            new Entity { Id = 5, SurnameEntity = "Figar", Email = "figar@mail.cz", City = "Ostrava", NameEntity = "Alois", Password = "password", Street = "Havlíčkova 818/56" }
         );
 
         context.SaveChanges();
