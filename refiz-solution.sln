@@ -20,6 +20,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.github\workflows\dotnet.yml = .github\workflows\dotnet.yml
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Refiz.Infrastructure.Tests", "src\tests\Refiz.Infrastructure.Tests\Refiz.Infrastructure.Tests.csproj", "{AD321B6B-3805-46F6-BDBB-BD9DCCCE665C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,11 +48,16 @@ Global
 		{E5E632EC-8A83-4A53-8F8C-17B54EA89162}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E5E632EC-8A83-4A53-8F8C-17B54EA89162}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E5E632EC-8A83-4A53-8F8C-17B54EA89162}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD321B6B-3805-46F6-BDBB-BD9DCCCE665C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD321B6B-3805-46F6-BDBB-BD9DCCCE665C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD321B6B-3805-46F6-BDBB-BD9DCCCE665C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD321B6B-3805-46F6-BDBB-BD9DCCCE665C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{3F749E15-32A6-40FB-8590-584C2D7D36BC} = {478CECCE-2BD7-4D8B-9BC5-6A8BDF19E54B}
 		{8C30558E-4214-4910-9590-34EE4DE19AC5} = {478CECCE-2BD7-4D8B-9BC5-6A8BDF19E54B}
 		{4E0E4E63-426A-4022-95E7-F8E689C93BCD} = {478CECCE-2BD7-4D8B-9BC5-6A8BDF19E54B}
 		{E5E632EC-8A83-4A53-8F8C-17B54EA89162} = {324ACFD4-81AF-4989-B135-D8F81C171A30}
+		{AD321B6B-3805-46F6-BDBB-BD9DCCCE665C} = {324ACFD4-81AF-4989-B135-D8F81C171A30}
 	EndGlobalSection
 EndGlobal
