@@ -18,6 +18,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		global.json = global.json
 		.github\workflows\dotnet.yml = .github\workflows\dotnet.yml
+		.gitignore = .gitignore
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Refiz.Infrastructure.Tests", "src\tests\Refiz.Infrastructure.Tests\Refiz.Infrastructure.Tests.csproj", "{AD321B6B-3805-46F6-BDBB-BD9DCCCE665C}"
