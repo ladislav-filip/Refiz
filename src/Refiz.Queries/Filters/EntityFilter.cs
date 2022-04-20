@@ -8,8 +8,9 @@
 
 namespace Refiz.Queries.Filters;
 
-public record EntityFilter(string? City = null, string? Email = null, int Limit = 0, int Skip = 0) : Filter
+public class EntityFilter : Filter
 {
-    private readonly int _limit = Limit;
-    private readonly int _skip = Skip;
+    public string City { get; init; }
+
+    public string Email { get; init; }
 }

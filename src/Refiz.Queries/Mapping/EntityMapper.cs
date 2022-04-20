@@ -16,8 +16,11 @@ public class EntityMapper : Profile
     {
         CreateMap<Entity, EntityItemList>()
             .ForCtorParam(nameof(EntityItemList.Id), opt => opt.MapFrom(src => src.Id))
-            .ForCtorParam(nameof(EntityItemList.DisplayName),
-                opt => opt.MapFrom(src => src.SurnameEntity + " " + src.NameEntity));
+            .ForCtorParam(nameof(EntityItemList.Surname),
+                opt => opt.MapFrom(src => src.SurnameEntity))
+            .ForCtorParam(nameof(EntityItemList.Name),
+                opt => opt.MapFrom(src => src.NameEntity))
+            ;
 
         CreateMap<Entity, EntityLogon>()
             .ForCtorParam(nameof(EntityItemList.Id), opt => opt.MapFrom(src => src.Id));

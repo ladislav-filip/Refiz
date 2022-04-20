@@ -20,14 +20,20 @@ public abstract class EfBaseQuery<TEntity, TKey, TItem, TFilter> : IBaseQuery
     {
         var query = Context.Set<TEntity>().AsQueryable();
         query = ApplyFilter(filter, query);
+        var totalCount = await GetTotalCount(query);
         query = GetAsPaginnate(filter, query);
         var data = await Mapper.ProjectTo<TItem>(query).ToListAsync();
-        return new RecordListMarker<TItem>(data.Count, data);
+        return new RecordListMarker<TItem>(totalCount, data);
     }
 
     protected virtual IQueryable<TEntity> ApplyFilter(TFilter filter, IQueryable<TEntity> query)
     {
         return query;
+    }
+
+    protected virtual Task<int> GetTotalCount(IQueryable<TEntity> query)
+    {
+        return query.CountAsync();
     }
     
     private IQueryable<TEntity> GetAsPaginnate(Filter filter, IQueryable<TEntity> query)

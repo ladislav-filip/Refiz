@@ -6,4 +6,4 @@
 
 namespace Refiz.Queries.Entities.Models;
 
-public record EntityItemList(int Id, string DisplayName, string Email) : RecordMarker;
+public record EntityItemList(int Id, string Surname, string Name, string Email) : RecordMarker;

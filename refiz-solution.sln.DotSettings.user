@@ -11,6 +11,7 @@
       &lt;TestId&gt;xUnit::7EC83237-AB52-40DA-AD3F-E675B1ACDFA7::net6.0::Refiz.Application.Tests.Infrastructure.CipherTests.Encrypt_&lt;/TestId&gt;&#xD;
       &lt;TestId&gt;xUnit::7EC83237-AB52-40DA-AD3F-E675B1ACDFA7::net6.0::Refiz.Application.Tests.Infrastructure.CipherTests.Decrypt_&lt;/TestId&gt;&#xD;
       &lt;TestId&gt;xUnit::7EC83237-AB52-40DA-AD3F-E675B1ACDFA7::net6.0::Refiz.Application.Tests.Infrastructure.CipherTests&lt;/TestId&gt;&#xD;
+      &lt;TestId&gt;xUnit::7EC83237-AB52-40DA-AD3F-E675B1ACDFA7::net6.0::Refiz.Application.Tests.Entities.EntityList.EntityListSearchCommandHandlerTests.Handle_&lt;/TestId&gt;&#xD;
     &lt;/TestAncestor&gt;&#xD;
   &lt;/Or&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

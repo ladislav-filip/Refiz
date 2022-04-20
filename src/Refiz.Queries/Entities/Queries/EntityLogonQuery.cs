@@ -24,7 +24,7 @@ public class EntityLogonQuery : EfBaseQuery<Entity, int, EntityLogon, EntityLogo
 
     public async Task<EntityLogon?> Get(string email)
     {
-        var filter = new EntityLogonFilter(email);
+        var filter = new EntityLogonFilter{ Email = email };
         var (count, entityLogons) = await Get(filter);
         return count == 0 ? null : entityLogons.First();
     }

@@ -8,4 +8,7 @@
 
 namespace Refiz.Queries.Filters;
 
-public record EntityLogonFilter(string Email) : Filter;
+public class EntityLogonFilter : Filter
+{
+    public string Email { get; init; }
+}

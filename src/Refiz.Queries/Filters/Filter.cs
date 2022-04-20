@@ -8,4 +8,11 @@
 
 namespace Refiz.Queries.Filters;
 
-public record Filter(int Limit = 0, int Skip = 0);
+public class Filter
+{
+    public Filter() { }
+    
+    public int Limit { get; init; }
+    
+    public int Skip { get; init; }
+}
