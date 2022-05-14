@@ -4,3 +4,5 @@ obj/
 riderModule.iml
 /_ReSharper.Caches/
 coverage.xml
+
+src/Frontend/Refiz.Blazor/appsettings.local.json

@@ -1,10 +1,37 @@
-using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
+using MediatR;
+using Microsoft.EntityFrameworkCore;
+using Refiz.Application.Infrastructure;
 using Refiz.Blazor.Data;
+using Refiz.Blazor.Extensions;
+using Refiz.Infrastructure;
+using Refiz.Queries;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var configuration = new ConfigurationBuilder()
+    .ConfigureCustomConfiguration()
+    .Build();
+
+builder.Configuration.AddConfiguration(configuration);
+
+var connectionString = configuration.GetConnectionString("Refiz");
+
 // Add services to the container.
+
+builder.Services.AddDbContext<RefizContext>(opt => opt.UseSqlServer(connectionString));
+builder.Services.AddScoped<IRefizContext, RefizContext>();
+
+builder.Services.AddTransient<ICipher>(_ => new Cipher("salt"));
+builder.Services.AddMediatR(typeof(Cipher));
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+builder.Services.Scan(scan =>
+    scan.FromAssemblyOf<IBaseQuery>()
+        .AddClasses()
+        .AsMatchingInterface()
+        .WithTransientLifetime()
+    );
+
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();

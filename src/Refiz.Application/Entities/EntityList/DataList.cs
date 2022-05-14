@@ -11,4 +11,9 @@ public class DataList<TItem>
         Count = count;
         Items = new List<TItem>(items);
     }
+
+    public static DataList<TItem> CreateEmpty()
+    {
+        return new DataList<TItem>(0, Array.Empty<TItem>());
+    }
 }
