@@ -28,9 +28,9 @@ public partial class Entities
     //     Title = "Entities razor";
     // }
 
-    protected override async Task OnInitializedAsync()
-    {
-        var query = new EntityListSearchCommand();
-        Data = await Mediator.Send(query);
-    }
+    // protected override async Task OnInitializedAsync()
+    // {
+    //     var query = new EntityListSearchCommand();
+    //     Data = await Mediator.Send(query);
+    // }
 }
