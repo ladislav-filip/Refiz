@@ -1,0 +1,13 @@
+version: "3"
+services:
+        mssql-refiz:
+            image: "mcr.microsoft.com/mssql/server"
+            container_name: "mssql-refiz"
+            ports:
+              - "1433:1433"
+            environment:
+              - SA_PASSWORD=Tukan123.
+              - ACCEPT_EULA=Y
+            volumes:
+              - ./data:/var/opt/mssql/data
+              - ./log:/var/opt/mssql/log                        

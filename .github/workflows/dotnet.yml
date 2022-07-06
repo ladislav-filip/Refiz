@@ -50,10 +50,10 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         shell: pwsh
         run: |
-          .\.sonar\scanner\dotnet-sonarscanner begin /k:"ladislav-filip_Refiz" /o:"pilifs" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.xunit.reportsPaths="**\coverage.cobertura.xml"
+          .\.sonar\scanner\dotnet-sonarscanner begin /k:"ladislav-filip_Refiz" /o:"pilifs" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.xunit.reportsPaths="**\coverage.xml"
           
           dotnet build refiz-solution.sln --configuration Release;
           
-          dotnet test refiz-solution.sln --no-build --collect:"XPlat Code Coverage";
+          dotnet test /p:AltCover=true;
           
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"

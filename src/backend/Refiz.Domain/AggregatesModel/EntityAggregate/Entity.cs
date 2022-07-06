@@ -2,14 +2,18 @@
 
 namespace Refiz.Domain.AggregatesModel.EntityAggregate
 {
-    public class Entity : DomainEntity<int>, IAggregateRoot
+    public sealed class Entity : DomainEntity<int>, IAggregateRoot
     {
         public Entity()
         {
             EntitySettings = new HashSet<EntitySetting>();
-            Logs = new HashSet<Log>();
             NotifyRecipients = new HashSet<NotifyRecipient>();
             Registers = new HashSet<Register>();
+        }
+
+        public Entity(Role role) : this()
+        {
+            Role = role;
         }
     
         public string NameEntity { get; set; } = null!;
@@ -33,14 +37,13 @@ namespace Refiz.Domain.AggregatesModel.EntityAggregate
         public bool Deleted { get; set; }
         public DateTime? DateDeleted { get; set; }
 
-        public virtual Country IdcountryNavigation { get; set; } = null!;
-        public virtual Organisation? IdorganisationNavigation { get; set; }
-        public virtual Region? IdregionNavigation { get; set; }
-        public virtual Role IdroleNavigation { get; set; } = null!;
-        public virtual ActivateEntity ActivateEntity { get; set; } = null!;
-        public virtual ICollection<EntitySetting> EntitySettings { get; set; }
-        public virtual ICollection<Log> Logs { get; set; }
-        public virtual ICollection<NotifyRecipient> NotifyRecipients { get; set; }
-        public virtual ICollection<Register> Registers { get; set; }
+        public Country Country { get; } = null!;
+        public Organisation? Organisation { get; set; }
+        public Region? Region { get; set; }
+        public Role Role { get; } = null!;
+        public ActivateEntity ActivateEntity { get; set; } = null!;
+        public ICollection<EntitySetting> EntitySettings { get; set; }
+        public ICollection<NotifyRecipient> NotifyRecipients { get; set; }
+        public ICollection<Register> Registers { get; set; }
     }
 }

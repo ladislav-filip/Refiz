@@ -8,4 +8,7 @@
 
 namespace Refiz.Queries.Filters;
 
-public record LanguageFilter(bool? Active = null, int Limit = 0, int Skip = 0) : Filter;
+public class LanguageFilter : Filter
+{
+    public bool? Active { get; init; }
+}

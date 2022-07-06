@@ -7,10 +7,10 @@ public abstract class EfBaseQuery<TEntity, TKey, TItem, TFilter> : IBaseQuery
     where TItem : RecordMarker
     where TFilter : Filter
 {
-    private RefizContext Context { get; }
+    private IRefizContext Context { get; }
     private IMapper Mapper { get; }
 
-    protected EfBaseQuery(RefizContext context, IMapper mapper)
+    protected EfBaseQuery(IRefizContext context, IMapper mapper)
     {
         Context = context;
         Mapper = mapper;
@@ -20,14 +20,20 @@ public abstract class EfBaseQuery<TEntity, TKey, TItem, TFilter> : IBaseQuery
     {
         var query = Context.Set<TEntity>().AsQueryable();
         query = ApplyFilter(filter, query);
+        var totalCount = await GetTotalCount(query);
         query = GetAsPaginnate(filter, query);
         var data = await Mapper.ProjectTo<TItem>(query).ToListAsync();
-        return new RecordListMarker<TItem>(data.Count, data);
+        return new RecordListMarker<TItem>(totalCount, data);
     }
 
     protected virtual IQueryable<TEntity> ApplyFilter(TFilter filter, IQueryable<TEntity> query)
     {
         return query;
+    }
+
+    protected virtual Task<int> GetTotalCount(IQueryable<TEntity> query)
+    {
+        return query.CountAsync();
     }
     
     private IQueryable<TEntity> GetAsPaginnate(Filter filter, IQueryable<TEntity> query)
