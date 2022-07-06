@@ -10,7 +10,7 @@ namespace Refiz.Blazor.Extensions;
 
 public static class ConfigurationBuilderExtensions
 {
-    public static IConfigurationBuilder ConfigureCustomConfiguration(this IConfigurationBuilder confBuilder, Assembly userSecretOfAssembly = null)
+    public static IConfigurationBuilder ConfigureCustomConfiguration(this IConfigurationBuilder confBuilder, Assembly? userSecretOfAssembly = null)
     {
         confBuilder.SetBasePath(Directory.GetCurrentDirectory())
             .AddJsonFile("appsettings.json")
