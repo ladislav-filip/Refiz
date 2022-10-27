@@ -1,11 +1,12 @@
-﻿using Refiz.Domain;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Refiz.Domain;
 using Refiz.Domain.AggregatesModel.EntityAggregate;
 using Refiz.Domain.AggregatesModel.RegisterAggregate;
 using Refiz.Domain.Views;
 
 namespace Refiz.Infrastructure
 {
-    public partial class RefizContext : DbContext, IRefizContext, IUnitOfWork
+    public partial class RefizContext : IdentityDbContext, IRefizContext, IUnitOfWork
     {
         public RefizContext()
         {
@@ -572,6 +573,8 @@ namespace Refiz.Infrastructure
             });
 
             OnModelCreatingPartial(modelBuilder);
+            
+            base.OnModelCreating(modelBuilder);
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);

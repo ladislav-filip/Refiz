@@ -1,4 +1,5 @@
 using MediatR;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Refiz.Application.Infrastructure;
 using Refiz.Blazor.Data;
@@ -20,6 +21,8 @@ var connectionString = configuration.GetConnectionString("Refiz");
 
 builder.Services.AddDbContext<RefizContext>(opt => opt.UseSqlServer(connectionString));
 builder.Services.AddScoped<IRefizContext, RefizContext>();
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<RefizContext>();
 
 builder.Services.AddTransient<ICipher>(_ => new Cipher("salt"));
 builder.Services.AddMediatR(typeof(Cipher));
@@ -52,6 +55,10 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
+app.UseAuthorization();
+
+app.MapControllers();
 app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");
 
