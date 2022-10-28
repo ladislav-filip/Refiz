@@ -16,10 +16,9 @@ public class LanguageListQuery : EfBaseQuery<Language, byte, LanguageItem, Langu
 
     protected override IQueryable<Language> ApplyFilter(LanguageFilter filter, IQueryable<Language> query)
     {
-        var (active, _, _) = filter;
-        if (active != null)
+        if (filter.Active != null)
         {
-            query = query.Where(p => p.Active == active);
+            query = query.Where(p => p.Active == filter.Active);
         }
 
         return query;

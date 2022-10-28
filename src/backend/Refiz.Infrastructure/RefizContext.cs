@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Refiz.Domain;
 using Refiz.Domain.AggregatesModel.EntityAggregate;
 using Refiz.Domain.AggregatesModel.RegisterAggregate;
@@ -6,7 +6,7 @@ using Refiz.Domain.Views;
 
 namespace Refiz.Infrastructure
 {
-    public partial class RefizContext : DbContext
+    public partial class RefizContext : IdentityDbContext, IRefizContext, IUnitOfWork
     {
         public RefizContext()
         {
@@ -16,30 +16,6 @@ namespace Refiz.Infrastructure
             : base(options)
         {
         }
-
-        // public virtual DbSet<ActivateEntity> ActivateEntities { get; set; } = null!;
-        public virtual DbSet<Country> Countries { get; set; } = null!;
-        public virtual DbSet<Entity> Entities { get; set; } = null!;
-        // public virtual DbSet<EntitySetting> EntitySettings { get; set; } = null!;
-        // public virtual DbSet<Group> Groups { get; set; } = null!;
-        public virtual DbSet<Language> Languages { get; set; } = null!;
-        // public virtual DbSet<Log> Logs { get; set; } = null!;
-        // public virtual DbSet<NotifyRecipient> NotifyRecipients { get; set; } = null!;
-        // public virtual DbSet<NotifySource> NotifySources { get; set; } = null!;
-        // public virtual DbSet<Organisation> Organisations { get; set; } = null!;
-        // public virtual DbSet<Photo> Photos { get; set; } = null!;
-        // public virtual DbSet<Preparation> Preparations { get; set; } = null!;
-        // public virtual DbSet<Region> Regions { get; set; } = null!;
-        // public virtual DbSet<Register> Registers { get; set; } = null!;
-        // public virtual DbSet<RegisterHistory> RegisterHistories { get; set; } = null!;
-        // public virtual DbSet<Role> Roles { get; set; } = null!;
-        // public virtual DbSet<Setting> Settings { get; set; } = null!;
-        // public virtual DbSet<State> States { get; set; } = null!;
-        // public virtual DbSet<WEntity> WEntities { get; set; } = null!;
-        // public virtual DbSet<WNotifyRecipient> WNotifyRecipients { get; set; } = null!;
-        // public virtual DbSet<WPreparation> WPreparations { get; set; } = null!;
-        // public virtual DbSet<WRegister> WRegisters { get; set; } = null!;
-        // public virtual DbSet<WRegisterHistory> WRegisterHistories { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -79,78 +55,6 @@ namespace Refiz.Infrastructure
                     .WithOne(p => p.ActivateEntity)
                     .HasForeignKey<ActivateEntity>(d => d.Identity)
                     .HasConstraintName("FK_ActivateEntities_entities");
-            });
-
-
-
-            modelBuilder.Entity<Entity>(entity =>
-            {
-                entity.HasKey(e => e.Id);
-
-                entity.ToTable("entities");
-
-                entity.HasIndex(e => e.Email, "UK_entities_email")
-                    .IsUnique();
-
-                entity.Property(e => e.Id).HasColumnName("IDEntity");
-
-                entity.Property(e => e.Cin)
-                    .HasMaxLength(15)
-                    .HasColumnName("CIN");
-
-                entity.Property(e => e.City).HasMaxLength(50);
-
-                entity.Property(e => e.DateActivated).HasColumnType("datetime");
-
-                entity.Property(e => e.DateCreate).HasColumnType("datetime");
-
-                entity.Property(e => e.DateDeleted).HasColumnType("datetime");
-
-                entity.Property(e => e.Email).HasMaxLength(150);
-
-                entity.Property(e => e.FirmName).HasMaxLength(150);
-
-                entity.Property(e => e.Idcountry).HasColumnName("IDCountry");
-
-                entity.Property(e => e.Idorganisation).HasColumnName("IDOrganisation");
-
-                entity.Property(e => e.Idregion).HasColumnName("IDRegion");
-
-                entity.Property(e => e.Idrole).HasColumnName("IDRole");
-
-                entity.Property(e => e.NameEntity).HasMaxLength(50);
-
-                entity.Property(e => e.Password).HasMaxLength(150);
-
-                entity.Property(e => e.Phone).HasMaxLength(50);
-
-                entity.Property(e => e.Street).HasMaxLength(50);
-
-                entity.Property(e => e.SurnameEntity).HasMaxLength(250);
-
-                entity.Property(e => e.Zip).HasMaxLength(10);
-
-                entity.HasOne(d => d.IdcountryNavigation)
-                    .WithMany(p => p.Entities)
-                    .HasForeignKey(d => d.Idcountry)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_entities_Countries");
-
-                entity.HasOne(d => d.IdorganisationNavigation)
-                    .WithMany(p => p.Entities)
-                    .HasForeignKey(d => d.Idorganisation)
-                    .HasConstraintName("FK_entities_Organisations");
-
-                entity.HasOne(d => d.IdregionNavigation)
-                    .WithMany(p => p.Entities)
-                    .HasForeignKey(d => d.Idregion)
-                    .HasConstraintName("FK_entities_Regions");
-
-                entity.HasOne(d => d.IdroleNavigation)
-                    .WithMany(p => p.Entities)
-                    .HasForeignKey(d => d.Idrole)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_entities_roles");
             });
 
             modelBuilder.Entity<EntitySetting>(entity =>
@@ -211,7 +115,7 @@ namespace Refiz.Infrastructure
                 entity.Property(e => e.UserAgent).HasMaxLength(255);
 
                 entity.HasOne(d => d.IdentityNavigation)
-                    .WithMany(p => p.Logs)
+                    .WithMany()
                     .HasForeignKey(d => d.Identity)
                     .HasConstraintName("FK_Logs_Entities");
             });
@@ -669,6 +573,8 @@ namespace Refiz.Infrastructure
             });
 
             OnModelCreatingPartial(modelBuilder);
+            
+            base.OnModelCreating(modelBuilder);
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);

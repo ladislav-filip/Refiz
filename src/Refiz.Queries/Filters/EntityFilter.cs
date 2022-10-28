@@ -8,4 +8,9 @@
 
 namespace Refiz.Queries.Filters;
 
-public record EntityFilter(string? City = null, string? Email = null, int Limit = 0, int Skip = 0) : Filter;
+public class EntityFilter : Filter
+{
+    public string City { get; init; }
+
+    public string Email { get; init; }
+}
