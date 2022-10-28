@@ -22,7 +22,7 @@
                     @if (User.Identity.IsAuthenticated)
                     {
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Account" asp-page="/Logout">@ViewRes.Texts.SignOut</a>
+                            <a class="nav-link text-dark" asp-area="Account" asp-page="/Logout">@User.Identity.Name @ViewRes.Texts.SignOut</a>
                         </li>
                     }
                     else

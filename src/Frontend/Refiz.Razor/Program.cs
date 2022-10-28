@@ -1,7 +1,22 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Refiz.Razor.Configuration;
+using Refiz.Razor.Infrastructure;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped<IUserManager, UserManager>();
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme,
+        opt =>
+        {
+            opt.LoginPath = "/Account/Login";
+            opt.LoginPath = "/Account/Logout";
+        });
+builder.Services.Configure<UserManagerOption>(builder.Configuration.GetSection("UserManager"));
 
 var app = builder.Build();
 
@@ -15,6 +30,7 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+app.UseAuthentication();
 
 app.UseRouting();
 
