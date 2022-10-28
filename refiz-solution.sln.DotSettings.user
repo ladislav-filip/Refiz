@@ -14,4 +14,6 @@
       &lt;TestId&gt;xUnit::7EC83237-AB52-40DA-AD3F-E675B1ACDFA7::net6.0::Refiz.Application.Tests.Entities.EntityList.EntityListSearchCommandHandlerTests.Handle_&lt;/TestId&gt;&#xD;
     &lt;/TestAncestor&gt;&#xD;
   &lt;/Or&gt;&#xD;
-&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
+&lt;/SessionState&gt;</s:String>
+	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=Backend_002FRefiz_002EResources_002FTexts/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/ResxEditorPersonal/Initialized/@EntryValue">True</s:Boolean></wpf:ResourceDictionary>

@@ -1,0 +1,38 @@
+﻿@page
+@model LoginModel
+@{
+    Layout = "_Layout";
+}
+
+@{
+    ViewData["Title"] = ViewRes.Texts.LogIn;
+}
+
+<div class="text-center">
+    <h1 class="display-4">@ViewRes.Texts.LogIn</h1>
+</div>
+
+<div class="row">
+    <div class="col">
+        <form method="post">
+            <div class="mb-3">
+                <label for="Username" class="form-label">@ViewRes.Texts.UserName</label>
+                <input id="Username" type="text" class="form-control" asp-for="Data.UserName" placeholder="@ViewRes.Texts.UserNameEnter"/>
+            </div>
+            
+            <div class="mb-3">
+                <label for="Password" class="form-label">@ViewRes.Texts.Password</label>
+                <input id="Password" type="password" class="form-control" asp-for="Data.Password" placeholder="@ViewRes.Texts.PasswordEnter"/>
+            </div>
+            
+            <input class="btn btn-success" type="submit" value="@ViewRes.Texts.Send"/>
+            
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        @Html.ValidationSummary(false, "")
+    </div>
+</div>

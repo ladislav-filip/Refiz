@@ -6,4 +6,8 @@
         <ImplicitUsings>enable</ImplicitUsings>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\..\backend\Refiz.Resources\Refiz.Resources.csproj" />
+    </ItemGroup>
+
 </Project>
