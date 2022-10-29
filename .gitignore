@@ -402,3 +402,5 @@ FodyWeavers.xsd
 .idea/.idea.refiz-solution/.idea/aws.xml
 
 Docker/data/
+
+src/Frontend/Refiz.Razor/appsettings.local.json
