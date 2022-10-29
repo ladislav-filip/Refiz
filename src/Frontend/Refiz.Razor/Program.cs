@@ -1,8 +1,15 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Refiz.Razor.Configuration;
 using Refiz.Razor.Infrastructure;
+using Refiz.Razor.Infrastructure.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
+
+var configuration = new ConfigurationBuilder()
+    .ConfigureCustomConfiguration()
+    .Build();
+builder.Configuration.AddConfiguration(configuration);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
@@ -17,6 +24,8 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
             opt.LoginPath = "/Account/Logout";
         });
 builder.Services.Configure<UserManagerOption>(builder.Configuration.GetSection("UserManager"));
+builder.Services.AddHealthChecks()
+    .AddSqlServer(configuration.GetConnectionString("Refiz"), timeout: TimeSpan.FromSeconds(3));
 
 var app = builder.Build();
 
@@ -29,6 +38,11 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.MapHealthChecks("/health", new HealthCheckOptions()
+{
+    AllowCachingResponses = false
+});
+
 app.UseStaticFiles();
 app.UseAuthentication();
 
