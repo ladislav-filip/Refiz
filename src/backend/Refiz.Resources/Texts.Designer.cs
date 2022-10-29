@@ -69,6 +69,15 @@ namespace ViewRes {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Chybné uživatelské jméno nebo heslo.
+        /// </summary>
+        public static string ErrLoginFail {
+            get {
+                return ResourceManager.GetString("ErrLoginFail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Domů.
         /// </summary>
         public static string Home {

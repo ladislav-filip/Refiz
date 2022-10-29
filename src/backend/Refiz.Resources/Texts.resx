@@ -147,4 +147,7 @@
   <data name="Home" xml:space="preserve">
     <value>Domů</value>
   </data>
+  <data name="ErrLoginFail" xml:space="preserve">
+    <value>Chybné uživatelské jméno nebo heslo</value>
+  </data>
 </root>

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Security.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Refiz.Razor.Infrastructure;
@@ -11,10 +12,10 @@ public class LoginModel : PageModel
 
     public class LoginRec
     {
-        [Required]
+        [Required, MinLength(3)]
         public string? UserName { get; init; }
         
-        [Required, MinLength(3)]
+        [Required]
         public string? Password { get; init; }
     }
 
@@ -29,11 +30,19 @@ public class LoginModel : PageModel
     {
         if (!ModelState.IsValid)
         {
-            ViewData["Err"] = "chyba";
             return Page();
         }
 
-        await _userManager.SignIn(data.UserName!, data.Password!);
+        try
+        {
+            await _userManager.SignIn(data.UserName!, data.Password!);
+        }
+        catch (AuthenticationException)
+        {
+            ModelState.AddModelError("account", ViewRes.Texts.ErrLoginFail);
+            return Page();
+        }
+
         return RedirectToPage("Index");
     }
 }
