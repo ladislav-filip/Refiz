@@ -21,8 +21,13 @@
                 <ul class="navbar-nav flex-grow-1">
                     @if (User.Identity.IsAuthenticated)
                     {
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Account" asp-page="/Logout">@User.Identity.Name @ViewRes.Texts.SignOut</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                @User.Identity.Name
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" asp-area="Account" asp-page="/Logout" >@ViewRes.Texts.SignOut</a></li>
+                            </ul>
                         </li>
                     }
                     else
