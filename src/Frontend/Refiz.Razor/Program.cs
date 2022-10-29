@@ -17,6 +17,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
             opt.LoginPath = "/Account/Logout";
         });
 builder.Services.Configure<UserManagerOption>(builder.Configuration.GetSection("UserManager"));
+builder.Services.AddHealthChecks();
 
 var app = builder.Build();
 
@@ -29,6 +30,7 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.MapHealthChecks("/health");
 app.UseStaticFiles();
 app.UseAuthentication();
 
