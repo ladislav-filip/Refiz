@@ -16,6 +16,7 @@ public static class ServiceCollectionExtensions
         serviceCollection.AddDbContext<RefizContext>(opt => opt.UseSqlServer(connectionString));
         serviceCollection.AddScoped<IRefizContext, RefizContext>();
         serviceCollection.AddTransient<ICipher>(_ => new Cipher(configuration.GetValue<string>(CipherSaltKey)));
+        serviceCollection.AddMediatR(typeof(Cipher));
 
         serviceCollection.AddCustomQueriesServices(configuration);
 
