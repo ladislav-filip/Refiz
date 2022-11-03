@@ -1,12 +1,10 @@
-﻿using System.Security.Authentication;
-using System.Security.Claims;
+﻿using System.Security.Claims;
 using MediatR;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.Extensions.Options;
 using Refiz.Application.Entities.Logon;
 using Refiz.Razor.Configuration;
-using Throw;
 
 namespace Refiz.Razor.Infrastructure;
 
@@ -25,12 +23,6 @@ public class UserManager : IUserManager
 
     public async Task SignIn(string userName, string password)
     {
-        // userName.Throw(() => throw new AuthenticationException())
-        //     .IfNotEquals(_userManagerOption.CurrentValue.DevUsername);
-        //
-        // password.Throw(() => throw new AuthenticationException())
-        //     .IfNotEquals(_userManagerOption.CurrentValue.DevPassword);
-
         var cmd = new UserLoggedCommand(userName, password);
         var userModel = await _mediator.Send(cmd);
 
