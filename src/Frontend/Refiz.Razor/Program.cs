@@ -7,6 +7,8 @@ using Refiz.Razor.Configuration;
 using Refiz.Razor.Infrastructure;
 using Refiz.Razor.Infrastructure.Extensions;
 
+const string connStringKey = "Refiz";
+
 var builder = WebApplication.CreateBuilder(args);
 
 var configuration = new ConfigurationBuilder()
@@ -28,8 +30,8 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         });
 builder.Services.Configure<UserManagerOption>(builder.Configuration.GetSection("UserManager"));
 builder.Services.AddHealthChecks()
-    .AddSqlServer(configuration.GetConnectionString("Refiz"), timeout: TimeSpan.FromSeconds(3));
-builder.Services.AddCustomApplicationServices(configuration);
+    .AddSqlServer(configuration.GetConnectionString(connStringKey), timeout: TimeSpan.FromSeconds(3));
+builder.Services.AddCustomApplicationServices(configuration, connStringKey);
 
 var app = builder.Build();
 

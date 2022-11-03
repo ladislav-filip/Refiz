@@ -10,9 +10,9 @@ namespace Refiz.Application.Infrastructure.Extensions;
 public static class ServiceCollectionExtensions
 {
     private const string CipherSaltKey = "CIPHER_SALT";
-    public static IServiceCollection AddCustomApplicationServices(this IServiceCollection serviceCollection, IConfiguration configuration)
+    public static IServiceCollection AddCustomApplicationServices(this IServiceCollection serviceCollection, IConfiguration configuration, string connStringKey)
     {
-        var connectionString = configuration.GetConnectionString("Refiz");
+        var connectionString = configuration.GetConnectionString(connStringKey);
         serviceCollection.AddDbContext<RefizContext>(opt => opt.UseSqlServer(connectionString));
         serviceCollection.AddScoped<IRefizContext, RefizContext>();
         serviceCollection.AddTransient<ICipher>(_ => new Cipher(configuration.GetValue<string>(CipherSaltKey)));
