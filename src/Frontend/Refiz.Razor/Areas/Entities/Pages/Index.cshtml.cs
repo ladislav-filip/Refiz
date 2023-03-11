@@ -15,7 +15,7 @@ namespace Refiz.Razor.Areas.Entities.Pages
         }
         
         public DataList<EntityListItemModel>? Data { get; set; }
-        
+
         public async Task<IActionResult> OnGetAsync(EntityListSearchCommand query)
         {
             Data = await _mediator.Send(query);

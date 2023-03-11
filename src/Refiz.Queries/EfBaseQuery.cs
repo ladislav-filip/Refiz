@@ -39,14 +39,14 @@ public abstract class EfBaseQuery<TEntity, TKey, TItem, TFilter> : IBaseQuery
     private IQueryable<TEntity> GetAsPaginnate(Filter filter, IQueryable<TEntity> query)
     {
 
+        if (filter.SkipRaw > 0)
+        {
+            query = query.Skip(filter.SkipRaw);
+        }
+        
         if (filter.Limit > 0)
         {
             query = query.Take(filter.Limit);
-        }
-
-        if (filter.Skip > 0)
-        {
-            query = query.Skip(filter.Skip);
         }
 
         return query;

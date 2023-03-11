@@ -15,4 +15,12 @@ public class Filter
     public int Limit { get; init; }
     
     public int Skip { get; init; }
+
+    public int SkipRaw
+    {
+        get
+        {
+            return Limit > 0 && Skip > 0 ?  Limit * Skip : 0;
+        }
+    }
 }
