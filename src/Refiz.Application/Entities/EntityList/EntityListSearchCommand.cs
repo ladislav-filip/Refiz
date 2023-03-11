@@ -12,7 +12,5 @@ public class EntityListSearchCommand : IRequest<DataList<EntityListItemModel>>
 
     public int Skip { get; init; }
 
-    public string? City { get; init; }
-
-    public string? Email { get; init; }
+    public string? Search { get; init; }
 }

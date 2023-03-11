@@ -17,7 +17,10 @@ var configuration = new ConfigurationBuilder()
 builder.Configuration.AddConfiguration(configuration);
 
 // Add services to the container.
-builder.Services.AddRazorPages();
+builder.Services.AddRazorPages(opt =>
+{
+    opt.Conventions.AuthorizeAreaFolder("Entities", "/");
+});
 
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<IUserManager, UserManager>();

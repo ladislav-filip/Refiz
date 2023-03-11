@@ -18,7 +18,7 @@ public abstract class EfBaseQuery<TEntity, TKey, TItem, TFilter> : IBaseQuery
 
     public async Task<RecordListMarker<TItem>> Get(TFilter filter)
     {
-        var query = Context.Set<TEntity>().AsQueryable();
+        var query = Context.Set<TEntity>().AsNoTracking().AsQueryable();
         query = ApplyFilter(filter, query);
         var totalCount = await GetTotalCount(query);
         query = GetAsPaginnate(filter, query);
