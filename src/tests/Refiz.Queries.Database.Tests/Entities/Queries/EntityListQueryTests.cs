@@ -16,19 +16,9 @@ public class EntityListQueryTests
     {
         var sut = new EntityListQuery(Helper.CreateRefizContext(), Helper.GetMapper());
 
-        var data = await sut.Get(new EntityFilter{Email = "mail"});
+        var data = await sut.Get(new EntityFilter{Search = "mail"});
 
         data.Count.Should().Be(5);
-    }
-    
-    [Fact]
-    public async Task Get_BlehovaEmailCaseInsensitive_Found()
-    {
-        var sut = new EntityListQuery(Helper.CreateRefizContext(), Helper.GetMapper());
-
-        var data = await sut.Get(new EntityFilter{Email = "BLEHOVA"});
-
-        data.Count.Should().Be(1);
     }
 
     [Fact]
