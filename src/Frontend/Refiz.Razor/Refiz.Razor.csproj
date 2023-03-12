@@ -8,10 +8,13 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\backend\Refiz.Resources\Refiz.Resources.csproj" />
+      <ProjectReference Include="..\..\Refiz.Application\Refiz.Application.csproj" />
     </ItemGroup>
 
     <ItemGroup>
       <PackageReference Include="AspNetCore.HealthChecks.SqlServer" Version="6.0.2" />
+      <PackageReference Include="MediatR" Version="11.0.0" />
+      <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
       <PackageReference Include="Throw" Version="1.3.1" />
     </ItemGroup>
 

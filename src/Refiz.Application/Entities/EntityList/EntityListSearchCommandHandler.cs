@@ -18,7 +18,8 @@ public class EntityListSearchCommandHandler : IRequestHandler<EntityListSearchCo
     public async Task<DataList<EntityListItemModel>> Handle(EntityListSearchCommand request, CancellationToken cancellationToken)
     {
         var filter = Mapper.Map<EntityFilter>(request);
+        
         var (count, entityItemLists) = await _entityListQuery.Get(filter);
-        return new DataList<EntityListItemModel>(count, Mapper.Map<IEnumerable<EntityListItemModel>>(entityItemLists));
+        return new DataList<EntityListItemModel>(count, request.Limit, Mapper.Map<IEnumerable<EntityListItemModel>>(entityItemLists));
     }
 }

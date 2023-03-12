@@ -18,7 +18,7 @@ public class EntityLogonQuery : EfBaseQuery<Entity, int, EntityLogon, EntityLogo
 
     protected override IQueryable<Entity> ApplyFilter(EntityLogonFilter filter, IQueryable<Entity> query)
     {
-        query = query.Where(p => p.Email.Contains(filter.Email, StringComparison.OrdinalIgnoreCase));
+        query = query.Where(p => p.Email.ToLower() == filter.Email.ToLower());
         return query;
     }
 

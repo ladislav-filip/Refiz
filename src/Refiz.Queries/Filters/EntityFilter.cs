@@ -10,7 +10,5 @@ namespace Refiz.Queries.Filters;
 
 public class EntityFilter : Filter
 {
-    public string City { get; init; }
-
-    public string Email { get; init; }
+    public string? Search { get; init; }
 }

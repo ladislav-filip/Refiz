@@ -1,8 +1,13 @@
+using MediatR;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Refiz.Application.Infrastructure;
+using Refiz.Application.Infrastructure.Extensions;
 using Refiz.Razor.Configuration;
 using Refiz.Razor.Infrastructure;
 using Refiz.Razor.Infrastructure.Extensions;
+
+const string connStringKey = "Refiz";
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,7 +17,10 @@ var configuration = new ConfigurationBuilder()
 builder.Configuration.AddConfiguration(configuration);
 
 // Add services to the container.
-builder.Services.AddRazorPages();
+builder.Services.AddRazorPages(opt =>
+{
+    opt.Conventions.AuthorizeAreaFolder("Entities", "/");
+});
 
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<IUserManager, UserManager>();
@@ -25,7 +33,8 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         });
 builder.Services.Configure<UserManagerOption>(builder.Configuration.GetSection("UserManager"));
 builder.Services.AddHealthChecks()
-    .AddSqlServer(configuration.GetConnectionString("Refiz"), timeout: TimeSpan.FromSeconds(3));
+    .AddSqlServer(configuration.GetConnectionString(connStringKey), timeout: TimeSpan.FromSeconds(3));
+builder.Services.AddCustomApplicationServices(configuration, connStringKey);
 
 var app = builder.Build();
 

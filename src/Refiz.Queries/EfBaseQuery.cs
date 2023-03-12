@@ -18,7 +18,7 @@ public abstract class EfBaseQuery<TEntity, TKey, TItem, TFilter> : IBaseQuery
 
     public async Task<RecordListMarker<TItem>> Get(TFilter filter)
     {
-        var query = Context.Set<TEntity>().AsQueryable();
+        var query = Context.Set<TEntity>().AsNoTracking().AsQueryable();
         query = ApplyFilter(filter, query);
         var totalCount = await GetTotalCount(query);
         query = GetAsPaginnate(filter, query);
@@ -39,14 +39,14 @@ public abstract class EfBaseQuery<TEntity, TKey, TItem, TFilter> : IBaseQuery
     private IQueryable<TEntity> GetAsPaginnate(Filter filter, IQueryable<TEntity> query)
     {
 
+        if (filter.SkipRaw > 0)
+        {
+            query = query.Skip(filter.SkipRaw);
+        }
+        
         if (filter.Limit > 0)
         {
             query = query.Take(filter.Limit);
-        }
-
-        if (filter.Skip > 0)
-        {
-            query = query.Skip(filter.Skip);
         }
 
         return query;

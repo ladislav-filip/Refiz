@@ -16,15 +16,13 @@ public class EntityListQuery : EfBaseQuery<Entity, int, EntityItemList, EntityFi
 
     protected override IQueryable<Entity> ApplyFilter(EntityFilter filter, IQueryable<Entity> query)
     {
-        if (!string.IsNullOrEmpty(filter.Email))
+        if (string.IsNullOrEmpty(filter.Search))
         {
-            query = query.Where(p => p.Email.Contains(filter.Email, StringComparison.OrdinalIgnoreCase));
+            return query;
         }
 
-        if (!string.IsNullOrEmpty(filter.City))
-        {
-            query = query.Where(p => p.City.Contains(filter.City, StringComparison.OrdinalIgnoreCase));
-        }
+        var search = filter.Search;
+        query = query.Where(p => p.City.Contains(search) || p.Email.Contains(search));
 
         return query;
     }
