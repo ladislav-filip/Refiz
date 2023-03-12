@@ -33,7 +33,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         });
 builder.Services.Configure<UserManagerOption>(builder.Configuration.GetSection("UserManager"));
 builder.Services.AddHealthChecks()
-    .AddSqlServer(configuration.GetConnectionString(connStringKey), timeout: TimeSpan.FromSeconds(3));
+    .AddMySql(configuration.GetConnectionString(connStringKey), name: "MariaDb");
 builder.Services.AddCustomApplicationServices(configuration, connStringKey);
 
 var app = builder.Build();

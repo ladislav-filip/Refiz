@@ -13,7 +13,15 @@ public static class ServiceCollectionExtensions
     public static IServiceCollection AddCustomApplicationServices(this IServiceCollection serviceCollection, IConfiguration configuration, string connStringKey)
     {
         var connectionString = configuration.GetConnectionString(connStringKey);
-        serviceCollection.AddDbContext<RefizContext>(opt => opt.UseSqlServer(connectionString));
+        // serviceCollection.AddDbContext<RefizContext>(opt => opt.UseSqlServer(connectionString));
+
+        var serverVesrion = new MariaDbServerVersion(new Version(10, 9, 5));
+        
+        serviceCollection.AddDbContext<RefizContext>(opt => 
+            opt.UseMySql(connectionString, serverVesrion)
+                .EnableDetailedErrors()
+            );
+        
         serviceCollection.AddScoped<IRefizContext, RefizContext>();
         serviceCollection.AddTransient<ICipher>(_ => new Cipher(configuration.GetValue<string>(CipherSaltKey)));
         serviceCollection.AddMediatR(typeof(Cipher));
