@@ -19,7 +19,12 @@ var connectionString = configuration.GetConnectionString("Refiz");
 
 // Add services to the container.
 
-builder.Services.AddDbContext<RefizContext>(opt => opt.UseSqlServer(connectionString));
+var serverVesrion = new MariaDbServerVersion(new Version(10, 9, 5));
+builder.Services.AddDbContext<RefizContext>(opt => 
+    opt.UseMySql(connectionString, serverVesrion)
+        .EnableDetailedErrors()
+);
+
 builder.Services.AddScoped<IRefizContext, RefizContext>();
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<RefizContext>();
