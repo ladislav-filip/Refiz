@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Refiz.Domain", "src\backend
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Refiz.Infrastructure", "src\backend\Refiz.Infrastructure\Refiz.Infrastructure.csproj", "{8C30558E-4214-4910-9590-34EE4DE19AC5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Refiz.Queries", "src\Refiz.Queries\Refiz.Queries.csproj", "{4E0E4E63-426A-4022-95E7-F8E689C93BCD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Refiz.Queries", "src\backend\Refiz.Queries\Refiz.Queries.csproj", "{4E0E4E63-426A-4022-95E7-F8E689C93BCD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{324ACFD4-81AF-4989-B135-D8F81C171A30}"
 EndProject
@@ -28,7 +28,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Refiz.Infrastructure.Tests", "src\tests\Refiz.Infrastructure.Tests\Refiz.Infrastructure.Tests.csproj", "{AD321B6B-3805-46F6-BDBB-BD9DCCCE665C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Refiz.Application", "src\Refiz.Application\Refiz.Application.csproj", "{8606E952-640C-4205-8090-67D19F67F8DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Refiz.Application", "src\backend\Refiz.Application\Refiz.Application.csproj", "{8606E952-640C-4205-8090-67D19F67F8DA}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Refiz.Application.Tests", "src\tests\Refiz.Application.Tests\Refiz.Application.Tests.csproj", "{7EC83237-AB52-40DA-AD3F-E675B1ACDFA7}"
 EndProject

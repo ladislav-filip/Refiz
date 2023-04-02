@@ -19,6 +19,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Refiz.Infrastructure\Refiz.Infrastructure.csproj" />
       <ProjectReference Include="..\Refiz.Queries\Refiz.Queries.csproj" />
     </ItemGroup>
 

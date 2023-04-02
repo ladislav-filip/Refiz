@@ -10,14 +10,20 @@
     <ItemGroup>
       <PackageReference Include="AutoMapper" Version="12.0.0" />
       <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
+      <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="6.0.0" />
       <PackageReference Include="FluentAssertions" Version="6.5.1" />
       <PackageReference Include="Scrutor" Version="3.3.0" />
 
       
     </ItemGroup>
 
-    <ItemGroup>
-      <ProjectReference Include="..\backend\Refiz.Infrastructure\Refiz.Infrastructure.csproj" />
+    <ItemGroup><!--      <ProjectReference Include="..\backend\Refiz.Infrastructure\Refiz.Infrastructure.csproj" />-->
+<!--      <ProjectReference Include="..\Refiz.Domain\Refiz.Domain.csproj" />-->
+<!--      <ProjectReference Include="..\Refiz.Infrastructure\Refiz.Infrastructure.csproj" />-->
+    
+      <ProjectReference Include="..\Refiz.Domain\Refiz.Domain.csproj" />
+    
+      <ProjectReference Include="..\Refiz.Infrastructure\Refiz.Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>

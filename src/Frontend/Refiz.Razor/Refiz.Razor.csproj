@@ -9,7 +9,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\backend\Refiz.Resources\Refiz.Resources.csproj" />
-      <ProjectReference Include="..\..\Refiz.Application\Refiz.Application.csproj" />
+      <ProjectReference Include="..\..\backend\Refiz.Application\Refiz.Application.csproj" />
     </ItemGroup>
 
     <ItemGroup>

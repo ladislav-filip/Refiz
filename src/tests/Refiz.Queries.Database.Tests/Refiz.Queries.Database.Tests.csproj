@@ -21,7 +21,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\Refiz.Queries\Refiz.Queries.csproj" />
+      <ProjectReference Include="..\..\backend\Refiz.Queries\Refiz.Queries.csproj" />
     </ItemGroup>
 
 </Project>
