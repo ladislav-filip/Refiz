@@ -406,3 +406,7 @@ Docker/data/
 src/Frontend/Refiz.Razor/appsettings.local.json
 
 .idea/.idea.refiz-solution/.idea/
+
+Docker/refiz-2/data/
+
+\!/
